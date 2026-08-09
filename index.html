@@ -25,6 +25,8 @@
       --iron: #8b2c2c;
       --cobalt: #1e44c2;
       --cobalt-dark: #142e8a;
+      --green: #1c7a45;
+      --green-dark: #10552e;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
@@ -132,6 +134,10 @@
     .nav-links a.study-link { color: var(--cobalt); }
     .nav-links a.study-link::after { background: var(--cobalt); }
     .nav-links a.study-link:hover { color: var(--cobalt-dark); }
+
+    .nav-links a.cards-link { color: var(--green); }
+    .nav-links a.cards-link::after { background: var(--green); }
+    .nav-links a.cards-link:hover { color: var(--green-dark); }
 
     /* ─── HERO ─── */
     #home {
@@ -253,6 +259,16 @@
 
     .btn-cobalt:hover {
       background: var(--cobalt);
+      color: #fff;
+    }
+
+    .btn-green {
+      border: 1px solid var(--green);
+      color: var(--green);
+    }
+
+    .btn-green:hover {
+      background: var(--green);
       color: #fff;
     }
 
@@ -771,6 +787,11 @@
     .zjim.zcodes::before { background: var(--cobalt); }
     .zjim.zcodes .zjim-eyebrow { color: var(--cobalt); }
 
+    /* Green variant — Six Cards callout */
+    .zjim.sixcards { margin-top: 44px; scroll-margin-top: 100px; }
+    .zjim.sixcards::before { background: var(--green); }
+    .zjim.sixcards .zjim-eyebrow { color: var(--green); }
+
     /* ─── CONTACT ─── */
     .contact-row {
       display: flex;
@@ -889,6 +910,7 @@
     <li><a href="#certifications">Certifications</a></li>
     <li><a href="#fitness" class="health-link">Health &amp; Fitness</a></li>
     <li><a href="#study-library" class="study-link">Study Library</a></li>
+    <li><a href="#six-cards" class="cards-link">Six Cards</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -904,6 +926,7 @@
   <div class="hero-links">
     <a href="#projects" class="btn btn-outline">View Work</a>
     <a href="https://zachc0des.github.io/zjim/" target="_blank" rel="noopener" class="btn btn-iron">Z.JIM — Training Log ↗</a>
+    <a href="https://zachc0des.github.io/sixcards/" target="_blank" rel="noopener" class="btn btn-green">Six Cards — Business Cards ↗</a>
     <a href="https://zachc0des.github.io/Zachc0des-Portfolio/#/" target="_blank" rel="noopener" class="btn btn-cobalt">Zach/C0des — Study Library ↗</a>
     <a href="https://github.com/Zachc0des" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
   </div>
@@ -1409,6 +1432,31 @@
       <span class="zjim-url">zachc0des.github.io/Zachc0des-Portfolio</span>
     </div>
   </div>
+
+  <!-- SIX CARDS CALLOUT -->
+  <div class="zjim sixcards" id="six-cards">
+    <div>
+      <div class="zjim-eyebrow">Featured Site</div>
+      <h3 class="zjim-title">Six·<em>Cards</em></h3>
+      <p class="zjim-desc">
+        Custom business cards that open doors — six signature styles for companies building
+        their brand and people building their careers. Every card ships as double-sided,
+        print-ready 300 DPI files with printing steps included, plus fully custom designs
+        built from scratch on request.
+      </p>
+      <div class="skill-tags">
+        <span class="tag">Business Cards</span>
+        <span class="tag">Brand Design</span>
+        <span class="tag">Print-Ready Files</span>
+        <span class="tag">Six Styles</span>
+        <span class="tag">Custom Design</span>
+      </div>
+    </div>
+    <div class="zjim-cta">
+      <a href="https://zachc0des.github.io/sixcards/" target="_blank" rel="noopener" class="btn btn-green">Open Six Cards ↗</a>
+      <span class="zjim-url">zachc0des.github.io/sixcards</span>
+    </div>
+  </div>
 </section>
 
 <!-- AI STACK -->
@@ -1630,6 +1678,9 @@
       <a href="https://zachc0des.github.io/Zachc0des-Portfolio/#/" target="_blank" rel="noopener" class="contact-link">
         <span>ZACH/C0DES</span> zachc0des.github.io/Zachc0des-Portfolio
       </a>
+      <a href="https://zachc0des.github.io/sixcards/" target="_blank" rel="noopener" class="contact-link">
+        <span>SIX CARDS</span> zachc0des.github.io/sixcards
+      </a>
       <a href="https://zachc0des.github.io/zjim/" target="_blank" rel="noopener" class="contact-link">
         <span>Z.JIM</span> zachc0des.github.io/zjim
       </a>
@@ -1642,7 +1693,7 @@
 
 <footer>
   <span>© 2026 Zachary Frederic</span>
-  <span>IT · Design · Development · <a href="https://zachc0des.github.io/Zachc0des-Portfolio/#/" target="_blank" rel="noopener">Zach/C0des</a> · <a href="https://zachc0des.github.io/zjim/" target="_blank" rel="noopener">Z.JIM</a></span>
+  <span>IT · Design · Development · <a href="https://zachc0des.github.io/Zachc0des-Portfolio/#/" target="_blank" rel="noopener">Zach/C0des</a> · <a href="https://zachc0des.github.io/sixcards/" target="_blank" rel="noopener">Six Cards</a> · <a href="https://zachc0des.github.io/zjim/" target="_blank" rel="noopener">Z.JIM</a></span>
 </footer>
 
 <script>
