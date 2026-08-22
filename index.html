@@ -29,6 +29,8 @@
       --green-dark: #10552e;
       --amber: #a16207;
       --amber-dark: #7a4a05;
+      --violet: #5b21b6;
+      --violet-dark: #3f1580;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
@@ -104,6 +106,8 @@
       gap: 30px;
       list-style: none;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-links a {
@@ -144,6 +148,10 @@
     .nav-links a.cards-link { color: var(--green); }
     .nav-links a.cards-link::after { background: var(--green); }
     .nav-links a.cards-link:hover { color: var(--green-dark); }
+
+    .nav-links a.vault-link { color: var(--violet); }
+    .nav-links a.vault-link::after { background: var(--violet); }
+    .nav-links a.vault-link:hover { color: var(--violet-dark); }
 
     /* ─── HERO ─── */
     #home {
@@ -285,6 +293,16 @@
 
     .btn-amber:hover {
       background: var(--amber);
+      color: #fff;
+    }
+
+    .btn-violet {
+      border: 1px solid var(--violet);
+      color: var(--violet);
+    }
+
+    .btn-violet:hover {
+      background: var(--violet);
       color: #fff;
     }
 
@@ -813,6 +831,11 @@
     .zjim.sixcards::before { background: var(--green); }
     .zjim.sixcards .zjim-eyebrow { color: var(--green); }
 
+    /* Violet variant — Z Vault callout */
+    .zjim.zvault { margin-top: 44px; scroll-margin-top: 100px; }
+    .zjim.zvault::before { background: var(--violet); }
+    .zjim.zvault .zjim-eyebrow { color: var(--violet); }
+
     /* ─── CONTACT ─── */
     .contact-row {
       display: flex;
@@ -878,6 +901,11 @@
     ::-webkit-scrollbar-thumb { background: var(--dim); }
 
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 1180px) {
+      nav { padding: 16px 32px; }
+      .nav-links { gap: 20px; }
+    }
+
     @media (max-width: 900px) {
       .cols-3 { grid-template-columns: 1fr; }
       .fitness-intro { grid-template-columns: 1fr; gap: 32px; }
@@ -933,6 +961,7 @@
     <li><a href="#study-library" class="study-link">Study Library</a></li>
     <li><a href="#z-concepts" class="concepts-link">Z Concepts</a></li>
     <li><a href="#six-cards" class="cards-link">Six Cards</a></li>
+    <li><a href="#z-vault" class="vault-link">Z Vault</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -951,6 +980,7 @@
     <a href="https://zachc0des.github.io/Zachc0des-Portfolio/#/" target="_blank" rel="noopener" class="btn btn-cobalt">Zach/C0des — Study Library ↗</a>
     <a href="https://zachc0des.github.io/zconcepts/" target="_blank" rel="noopener" class="btn btn-amber">Z Concepts — Markets ↗</a>
     <a href="https://zachc0des.github.io/sixcards/" target="_blank" rel="noopener" class="btn btn-green">Six Cards — Business Cards ↗</a>
+    <a href="https://zachc0des.github.io/Zvault/" target="_blank" rel="noopener" class="btn btn-violet">Z Vault — Visual Archive ↗</a>
     <a href="https://github.com/Zachc0des" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
   </div>
 </div>
@@ -1507,6 +1537,31 @@
       <span class="zjim-url">zachc0des.github.io/sixcards</span>
     </div>
   </div>
+
+  <!-- Z VAULT CALLOUT -->
+  <div class="zjim zvault" id="z-vault">
+    <div>
+      <div class="zjim-eyebrow">Featured Site</div>
+      <h3 class="zjim-title">Z·<em>Vault</em></h3>
+      <p class="zjim-desc">
+        The archive — a collection of visual artifacts filed by concept rather than by date.
+        Charts, dashboards, breakdowns, and reference visuals built while working through
+        markets, technology, and everything else worth mapping out. Open a concept, read
+        the artifact, flip the whole archive light or dark with one toggle.
+      </p>
+      <div class="skill-tags">
+        <span class="tag">Visual Artifacts</span>
+        <span class="tag">Filed by Concept</span>
+        <span class="tag">Dashboards</span>
+        <span class="tag">Research Visuals</span>
+        <span class="tag">Archive</span>
+      </div>
+    </div>
+    <div class="zjim-cta">
+      <a href="https://zachc0des.github.io/Zvault/" target="_blank" rel="noopener" class="btn btn-violet">Open Z Vault ↗</a>
+      <span class="zjim-url">zachc0des.github.io/Zvault</span>
+    </div>
+  </div>
 </section>
 
 <!-- AI STACK -->
@@ -1734,6 +1789,9 @@
       <a href="https://zachc0des.github.io/sixcards/" target="_blank" rel="noopener" class="contact-link">
         <span>SIX CARDS</span> zachc0des.github.io/sixcards
       </a>
+      <a href="https://zachc0des.github.io/Zvault/" target="_blank" rel="noopener" class="contact-link">
+        <span>Z VAULT</span> zachc0des.github.io/Zvault
+      </a>
       <a href="https://zachc0des.github.io/zjim/" target="_blank" rel="noopener" class="contact-link">
         <span>Z.JIM</span> zachc0des.github.io/zjim
       </a>
@@ -1746,7 +1804,7 @@
 
 <footer>
   <span>© 2026 Zachary Frederic</span>
-  <span>IT · Design · Development · <a href="https://zachc0des.github.io/Zachc0des-Portfolio/#/" target="_blank" rel="noopener">Zach/C0des</a> · <a href="https://zachc0des.github.io/zconcepts/" target="_blank" rel="noopener">Z Concepts</a> · <a href="https://zachc0des.github.io/sixcards/" target="_blank" rel="noopener">Six Cards</a> · <a href="https://zachc0des.github.io/zjim/" target="_blank" rel="noopener">Z.JIM</a></span>
+  <span>IT · Design · Development · <a href="https://zachc0des.github.io/Zachc0des-Portfolio/#/" target="_blank" rel="noopener">Zach/C0des</a> · <a href="https://zachc0des.github.io/zconcepts/" target="_blank" rel="noopener">Z Concepts</a> · <a href="https://zachc0des.github.io/sixcards/" target="_blank" rel="noopener">Six Cards</a> · <a href="https://zachc0des.github.io/Zvault/" target="_blank" rel="noopener">Z Vault</a> · <a href="https://zachc0des.github.io/zjim/" target="_blank" rel="noopener">Z.JIM</a></span>
 </footer>
 
 <script>
