@@ -1,37 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zachary Frederic — IT Management, Development & Design</title>
+  <title>Zachary Frederic — IT Management, Development &amp; Design</title>
   <meta name="description" content="Zachary Frederic — IT professional, developer, and creative technologist based in Palm Beach & Orlando, FL." />
+  <meta name="theme-color" content="#faeee1" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #ffffff;
-      --ink: #0a0a0a;
-      --grey: #4a4a4a;
-      --dim: #9a9a9a;
-      --accent: #1a1a1a;
-      --border: rgba(0,0,0,0.12);
-      --hair: rgba(0,0,0,0.07);
-      --card-bg: #f6f5f3;
-      --card-hover: #efedea;
-      --nav-bg: rgba(255,255,255,0.82);
-      --tag-border: #c4c4c4;
-      --tag-color: #555;
-      --iron: #8b2c2c;
-      --cobalt: #1e44c2;
-      --cobalt-dark: #142e8a;
-      --green: #1c7a45;
-      --green-dark: #10552e;
-      --amber: #a16207;
-      --amber-dark: #7a4a05;
-      --violet: #5b21b6;
-      --violet-dark: #3f1580;
+    /* ══════════════════════════════════════════════
+       HARVEST — warm cream + walnut ink palette
+       Light = daylight field · Dark = lantern / mine
+       ══════════════════════════════════════════════ */
+    :root, [data-theme="light"] {
+      --bg: #faeee1;
+      --bg-alt: #f4e2ce;
+      --ink: #4b3526;
+      --grey: #7b5c47;
+      --dim: #a98a71;
+      --accent: #3d2a1d;
+      --border: rgba(93,64,44,0.20);
+      --hair: rgba(93,64,44,0.11);
+      --card-bg: #f5e6d4;
+      --card-hover: #f0dbc3;
+      --nav-bg: rgba(250,238,225,0.86);
+      --panel-bg: rgba(250,238,225,0.62);
+      --tag-border: #d8bfa5;
+      --tag-color: #7b5c47;
+      --line: rgba(93,64,44,0.32);
+      --on-accent: #fdf5ea;
+      --iron: #a4442f;
+      --iron-dark: #7d2f1f;
+      --cobalt: #35657f;
+      --cobalt-dark: #234b5e;
+      --green: #4f7a3a;
+      --green-dark: #3a5c29;
+      --amber: #b0761a;
+      --amber-dark: #8a5a0f;
+      --violet: #7a4a86;
+      --violet-dark: #5c3565;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #241a13;
+      --bg-alt: #2c2019;
+      --ink: #f5e5d2;
+      --grey: #cdb098;
+      --dim: #9a7f68;
+      --accent: #fbf0e2;
+      --border: rgba(245,229,210,0.18);
+      --hair: rgba(245,229,210,0.09);
+      --card-bg: #2e2119;
+      --card-hover: #392921;
+      --nav-bg: rgba(36,26,19,0.88);
+      --panel-bg: rgba(36,26,19,0.6);
+      --tag-border: #5d4634;
+      --tag-color: #cdb098;
+      --line: rgba(245,229,210,0.24);
+      --on-accent: #241a13;
+      --iron: #e08063;
+      --iron-dark: #f0a189;
+      --cobalt: #6fb0cd;
+      --cobalt-dark: #97cbe2;
+      --green: #93c069;
+      --green-dark: #b2d78d;
+      --amber: #e0a63c;
+      --amber-dark: #f0c473;
+      --violet: #c08fd0;
+      --violet-dark: #d7b1e3;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,9 +85,10 @@
       line-height: 1.8;
       cursor: crosshair;
       overflow-x: hidden;
+      transition: background 0.5s var(--ease), color 0.5s var(--ease);
     }
 
-    /* ─── LIVE WAVE FIELD (signature) ─── */
+    /* ─── LIVE CONTOUR FIELD (signature) ─── */
     #waves {
       position: fixed;
       inset: 0;
@@ -56,9 +96,10 @@
       height: 100%;
       z-index: 0;
       pointer-events: none;
+      opacity: 0.85;
     }
 
-    /* ─── NOISE OVERLAY ─── */
+    /* ─── PAPER GRAIN ─── */
     body::before {
       content: '';
       position: fixed;
@@ -66,13 +107,90 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 9999;
-      opacity: 0.35;
+      opacity: 0.4;
+      mix-blend-mode: multiply;
     }
+
+    [data-theme="dark"] body::before { mix-blend-mode: screen; opacity: 0.22; }
 
     a:focus-visible, button:focus-visible {
       outline: 1px solid var(--ink);
       outline-offset: 4px;
     }
+
+    /* ═══ ENGRAVED LINE ART ═══ */
+    .art {
+      color: var(--line);
+      pointer-events: none;
+      user-select: none;
+    }
+    .art svg { display: block; width: 100%; height: 100%; overflow: visible; }
+
+    .art-abs { position: absolute; z-index: 0; }
+
+    .art-hero-rings {
+      top: 50%;
+      right: -170px;
+      transform: translateY(-46%);
+      width: 620px;
+      height: 620px;
+      opacity: 0.75;
+    }
+
+    .art-corner {
+      top: 0;
+      right: 0;
+      width: 190px;
+      height: 190px;
+      opacity: 0.5;
+    }
+
+    .art-corner-left {
+      top: 0;
+      left: 0;
+      width: 170px;
+      height: 170px;
+      opacity: 0.5;
+      transform: scaleX(-1);
+    }
+
+    .art-band {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 52px;
+      opacity: 0.55;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+    }
+
+    .art-callout {
+      position: absolute;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 280px;
+      height: 280px;
+      opacity: 0.42;
+    }
+
+    .art-footer {
+      position: absolute;
+      inset: 0;
+      opacity: 0.4;
+      overflow: hidden;
+    }
+
+    .sprout {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      color: var(--dim);
+      flex: none;
+    }
+    .sprout svg { width: 100%; height: 100%; }
 
     /* ─── NAV ─── */
     nav {
@@ -135,7 +253,7 @@
 
     .nav-links a.health-link { color: var(--iron); }
     .nav-links a.health-link::after { background: var(--iron); }
-    .nav-links a.health-link:hover { color: #6b1a1a; }
+    .nav-links a.health-link:hover { color: var(--iron-dark); }
 
     .nav-links a.study-link { color: var(--cobalt); }
     .nav-links a.study-link::after { background: var(--cobalt); }
@@ -153,6 +271,38 @@
     .nav-links a.vault-link::after { background: var(--violet); }
     .nav-links a.vault-link:hover { color: var(--violet-dark); }
 
+    /* ─── THEME TOGGLE ─── */
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border: 1px solid var(--tag-border);
+      background: transparent;
+      color: var(--grey);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      cursor: crosshair;
+      transition: all 0.3s var(--ease);
+      white-space: nowrap;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+      background: var(--card-hover);
+    }
+
+    .theme-glyph {
+      width: 13px; height: 13px;
+      flex: none;
+      transition: transform 0.6s var(--ease);
+    }
+    .theme-glyph svg { width: 100%; height: 100%; display: block; }
+    [data-theme="dark"] .theme-glyph { transform: rotate(180deg); }
+
     /* ─── HERO ─── */
     #home {
       min-height: 100vh;
@@ -167,6 +317,8 @@
       z-index: 1;
     }
 
+    #home > *:not(.art) { position: relative; z-index: 1; }
+
     .hero-tag {
       font-size: 10px;
       letter-spacing: 0.4em;
@@ -180,7 +332,7 @@
       display: inline-block;
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: var(--ink);
+      background: var(--green);
       margin-right: 8px;
       vertical-align: middle;
       animation: blink 2.4s ease-in-out infinite;
@@ -236,75 +388,26 @@
       background: transparent;
     }
 
-    .btn-outline {
-      border: 1px solid var(--ink);
-      color: var(--ink);
-    }
+    .btn-outline { border: 1px solid var(--ink); color: var(--ink); }
+    .btn-outline:hover { background: var(--ink); color: var(--bg); }
 
-    .btn-outline:hover {
-      background: var(--ink);
-      color: var(--bg);
-    }
+    .btn-ghost { border: 1px solid var(--tag-border); color: var(--grey); }
+    .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
 
-    .btn-ghost {
-      border: 1px solid var(--tag-border);
-      color: var(--grey);
-    }
+    .btn-iron { border: 1px solid var(--iron); color: var(--iron); }
+    .btn-iron:hover { background: var(--iron); color: var(--on-accent); }
 
-    .btn-ghost:hover {
-      border-color: var(--ink);
-      color: var(--ink);
-    }
+    .btn-cobalt { border: 1px solid var(--cobalt); color: var(--cobalt); }
+    .btn-cobalt:hover { background: var(--cobalt); color: var(--on-accent); }
 
-    .btn-iron {
-      border: 1px solid var(--iron);
-      color: var(--iron);
-    }
+    .btn-green { border: 1px solid var(--green); color: var(--green); }
+    .btn-green:hover { background: var(--green); color: var(--on-accent); }
 
-    .btn-iron:hover {
-      background: var(--iron);
-      color: #fff;
-    }
+    .btn-amber { border: 1px solid var(--amber); color: var(--amber); }
+    .btn-amber:hover { background: var(--amber); color: var(--on-accent); }
 
-    .btn-cobalt {
-      border: 1px solid var(--cobalt);
-      color: var(--cobalt);
-    }
-
-    .btn-cobalt:hover {
-      background: var(--cobalt);
-      color: #fff;
-    }
-
-    .btn-green {
-      border: 1px solid var(--green);
-      color: var(--green);
-    }
-
-    .btn-green:hover {
-      background: var(--green);
-      color: #fff;
-    }
-
-    .btn-amber {
-      border: 1px solid var(--amber);
-      color: var(--amber);
-    }
-
-    .btn-amber:hover {
-      background: var(--amber);
-      color: #fff;
-    }
-
-    .btn-violet {
-      border: 1px solid var(--violet);
-      color: var(--violet);
-    }
-
-    .btn-violet:hover {
-      background: var(--violet);
-      color: #fff;
-    }
+    .btn-violet { border: 1px solid var(--violet); color: var(--violet); }
+    .btn-violet:hover { background: var(--violet); color: var(--on-accent); }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
@@ -320,7 +423,7 @@
       padding: 12px 0;
       position: relative;
       z-index: 1;
-      background: rgba(255,255,255,0.55);
+      background: var(--panel-bg);
     }
 
     .ticker-track {
@@ -349,12 +452,14 @@
     /* ─── SECTIONS ─── */
     section {
       padding: 100px 48px;
-      border-top: 1px solid var(--hair);
       max-width: 1100px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
+      overflow: hidden;
     }
+
+    section > *:not(.art) { position: relative; z-index: 1; }
 
     .section-label {
       font-size: 10px;
@@ -364,7 +469,7 @@
       margin-bottom: 56px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     .section-label::after {
@@ -431,8 +536,6 @@
     }
 
     /* ─── CARD GRIDS (shared) ─── */
-    /* Hairlines are drawn per-cell so leftover grid cells stay empty
-       instead of rendering as a grey box. */
     .grid-frame {
       display: grid;
       gap: 1px;
@@ -448,9 +551,29 @@
       background: var(--card-bg);
       box-shadow: 0 0 0 1px var(--border);
       transition: background 0.35s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* engraved hatch corner — appears on hover */
+    .cell::after {
+      content: '';
+      position: absolute;
+      top: -20px; right: -20px;
+      width: 130px; height: 130px;
+      background: repeating-linear-gradient(
+        0deg,
+        var(--line) 0 1px,
+        transparent 1px 7px
+      );
+      opacity: 0;
+      transform: rotate(-14deg);
+      transition: opacity 0.45s var(--ease);
+      pointer-events: none;
     }
 
     .cell:hover { background: var(--card-hover); }
+    .cell:hover::after { opacity: 0.5; }
 
     /* ─── SKILLS ─── */
     .skill-card {
@@ -466,6 +589,7 @@
       width: 2px; height: 0;
       background: var(--ink);
       transition: height 0.45s var(--ease);
+      z-index: 2;
     }
 
     .skill-card:hover::before { height: 100%; }
@@ -476,6 +600,8 @@
       text-transform: uppercase;
       color: var(--dim);
       margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
     }
 
     .skill-title {
@@ -484,12 +610,16 @@
       font-weight: 300;
       margin-bottom: 14px;
       color: var(--ink);
+      position: relative;
+      z-index: 1;
     }
 
     .card-copy {
       color: var(--grey);
       font-size: 11px;
       line-height: 1.95;
+      position: relative;
+      z-index: 1;
     }
 
     .skill-tags {
@@ -497,6 +627,8 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 16px;
+      position: relative;
+      z-index: 1;
     }
 
     .tag {
@@ -593,11 +725,7 @@
       margin-bottom: 18px;
     }
 
-    .project-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 8px; }
 
     .project-arrow {
       font-size: 20px;
@@ -619,6 +747,8 @@
       margin-bottom: 18px;
       display: block;
       color: var(--accent);
+      position: relative;
+      z-index: 1;
     }
 
     .ai-name {
@@ -626,12 +756,16 @@
       font-size: 26px;
       font-weight: 300;
       margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
     }
 
     .ai-uses {
       color: var(--grey);
       font-size: 11px;
       line-height: 2;
+      position: relative;
+      z-index: 1;
     }
 
     .ai-use-item {
@@ -651,6 +785,8 @@
       margin-top: 20px;
       padding-top: 18px;
       border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
     }
 
     .ai-credential-label {
@@ -723,12 +859,16 @@
       font-weight: 300;
       margin-bottom: 16px;
       color: var(--accent);
+      position: relative;
+      z-index: 1;
     }
 
     .fitness-text {
       color: var(--grey);
       font-size: 11px;
       line-height: 2;
+      position: relative;
+      z-index: 1;
     }
 
     .fitness-stat { padding: 28px 32px; }
@@ -739,6 +879,8 @@
       text-transform: uppercase;
       color: var(--dim);
       margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
     }
 
     .fitness-stat-value {
@@ -746,9 +888,11 @@
       font-size: 24px;
       font-weight: 300;
       color: var(--accent);
+      position: relative;
+      z-index: 1;
     }
 
-    /* ─── ZJIM / FEATURED CALLOUTS ─── */
+    /* ─── FEATURED CALLOUTS ─── */
     .zjim {
       margin-top: 1px;
       border: 1px solid var(--border);
@@ -763,6 +907,8 @@
       transition: background 0.35s var(--ease);
     }
 
+    .zjim > *:not(.art) { position: relative; z-index: 1; }
+
     .zjim:hover { background: var(--card-hover); }
 
     .zjim::before {
@@ -774,6 +920,7 @@
       transform: scaleY(0);
       transform-origin: top;
       transition: transform 0.5s var(--ease);
+      z-index: 2;
     }
 
     .zjim:hover::before { transform: scaleY(1); }
@@ -805,7 +952,6 @@
     }
 
     .zjim-cta { text-align: right; }
-
     .zjim-cta .btn { padding: 16px 34px; }
 
     .zjim-url {
@@ -816,22 +962,18 @@
       color: var(--dim);
     }
 
-    /* Cobalt variant — Zach/C0des study library callout */
     .zjim.zcodes { margin-top: 44px; scroll-margin-top: 100px; }
     .zjim.zcodes::before { background: var(--cobalt); }
     .zjim.zcodes .zjim-eyebrow { color: var(--cobalt); }
 
-    /* Amber variant — Z Concepts callout */
     .zjim.zconcepts { margin-top: 44px; scroll-margin-top: 100px; }
     .zjim.zconcepts::before { background: var(--amber); }
     .zjim.zconcepts .zjim-eyebrow { color: var(--amber); }
 
-    /* Green variant — Six Cards callout */
     .zjim.sixcards { margin-top: 44px; scroll-margin-top: 100px; }
     .zjim.sixcards::before { background: var(--green); }
     .zjim.sixcards .zjim-eyebrow { color: var(--green); }
 
-    /* Violet variant — Z Vault callout */
     .zjim.zvault { margin-top: 44px; scroll-margin-top: 100px; }
     .zjim.zvault::before { background: var(--violet); }
     .zjim.zvault .zjim-eyebrow { color: var(--violet); }
@@ -889,8 +1031,11 @@
       letter-spacing: 0.2em;
       position: relative;
       z-index: 1;
-      background: rgba(255,255,255,0.6);
+      background: var(--panel-bg);
+      overflow: hidden;
     }
+
+    footer > span { position: relative; z-index: 1; }
 
     footer a { color: var(--dim); text-decoration: none; }
     footer a:hover { color: var(--ink); }
@@ -913,6 +1058,7 @@
       .zjim-cta { text-align: left; }
       .cert-item { grid-template-columns: 1fr; gap: 10px; }
       .cert-issuer { padding-top: 0; }
+      .art-callout { display: none; }
     }
 
     @media (max-width: 768px) {
@@ -930,6 +1076,9 @@
       .contact-links { align-items: flex-start; }
       footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 22px; }
       .zjim-title { font-size: 32px; }
+      .art-hero-rings { right: -260px; width: 460px; height: 460px; opacity: 0.45; }
+      .art-corner, .art-corner-left { width: 120px; height: 120px; }
+      .art-band { height: 40px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -943,6 +1092,16 @@
       .ticker-track { animation: none; }
     }
   </style>
+  <script>
+    /* set theme before first paint — no flash */
+    (function () {
+      try {
+        var m = localStorage.getItem('zf-theme');
+        if (!m) m = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', m);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 
@@ -963,6 +1122,12 @@
     <li><a href="#six-cards" class="cards-link">Six Cards</a></li>
     <li><a href="#z-vault" class="vault-link">Z Vault</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span class="theme-glyph" aria-hidden="true"></span>
+        <span id="theme-label">Night</span>
+      </button>
+    </li>
   </ul>
 </nav>
 
@@ -995,6 +1160,7 @@
 
 <!-- ABOUT -->
 <section id="about">
+  <div class="art art-abs art-corner" data-art="polar" aria-hidden="true"></div>
   <div class="section-label">01 — About</div>
   <div class="about-grid">
     <div class="about-block">
@@ -1053,8 +1219,11 @@
   </div>
 </section>
 
+<div class="art art-band" data-art="hatch" aria-hidden="true"></div>
+
 <!-- SKILLS -->
 <section id="skills">
+  <div class="art art-abs art-corner-left" data-art="polar" aria-hidden="true"></div>
   <div class="section-label">02 — Skills &amp; Interests</div>
 
   <div class="grid-frame cols-auto">
@@ -1248,8 +1417,11 @@
   </div>
 </section>
 
+<div class="art art-band" data-art="contour" aria-hidden="true"></div>
+
 <!-- PROJECTS -->
 <section id="projects">
+  <div class="art art-abs art-corner" data-art="polar" aria-hidden="true"></div>
   <div class="section-label">03 — Projects</div>
 
   <div class="projects-list">
@@ -1463,6 +1635,7 @@
 
   <!-- ZACH/C0DES CALLOUT -->
   <div class="zjim zcodes" id="study-library">
+    <div class="art art-callout" data-art="rings" aria-hidden="true"></div>
     <div>
       <div class="zjim-eyebrow">Featured Site</div>
       <h3 class="zjim-title">Zach/<em>C0des</em></h3>
@@ -1488,6 +1661,7 @@
 
   <!-- Z CONCEPTS CALLOUT -->
   <div class="zjim zconcepts" id="z-concepts">
+    <div class="art art-callout" data-art="polar" aria-hidden="true"></div>
     <div>
       <div class="zjim-eyebrow">Featured Site</div>
       <h3 class="zjim-title">Z·<em>Concepts</em></h3>
@@ -1515,6 +1689,7 @@
 
   <!-- SIX CARDS CALLOUT -->
   <div class="zjim sixcards" id="six-cards">
+    <div class="art art-callout" data-art="rings" aria-hidden="true"></div>
     <div>
       <div class="zjim-eyebrow">Featured Site</div>
       <h3 class="zjim-title">Six·<em>Cards</em></h3>
@@ -1540,6 +1715,7 @@
 
   <!-- Z VAULT CALLOUT -->
   <div class="zjim zvault" id="z-vault">
+    <div class="art art-callout" data-art="polar" aria-hidden="true"></div>
     <div>
       <div class="zjim-eyebrow">Featured Site</div>
       <h3 class="zjim-title">Z·<em>Vault</em></h3>
@@ -1564,8 +1740,11 @@
   </div>
 </section>
 
+<div class="art art-band" data-art="hatch" aria-hidden="true"></div>
+
 <!-- AI STACK -->
 <section id="ai">
+  <div class="art art-abs art-corner-left" data-art="rings" aria-hidden="true"></div>
   <div class="section-label">04 — AI Stack</div>
 
   <div class="grid-frame cols-3">
@@ -1611,8 +1790,11 @@
   </div>
 </section>
 
+<div class="art art-band" data-art="contour" aria-hidden="true"></div>
+
 <!-- CERTIFICATIONS -->
 <section id="certifications">
+  <div class="art art-abs art-corner" data-art="polar" aria-hidden="true"></div>
   <div class="section-label">05 — Certifications</div>
 
   <div class="cert-list">
@@ -1696,8 +1878,11 @@
   </div>
 </section>
 
+<div class="art art-band" data-art="hatch" aria-hidden="true"></div>
+
 <!-- HEALTH & FITNESS -->
 <section id="fitness">
+  <div class="art art-abs art-corner-left" data-art="polar" aria-hidden="true"></div>
   <div class="section-label">06 — Health &amp; Fitness</div>
 
   <div class="fitness-intro">
@@ -1748,6 +1933,7 @@
 
   <!-- ZJIM CALLOUT -->
   <div class="zjim">
+    <div class="art art-callout" data-art="rings" aria-hidden="true"></div>
     <div>
       <div class="zjim-eyebrow">Companion Site</div>
       <h3 class="zjim-title">Z.<em>JIM</em></h3>
@@ -1763,8 +1949,11 @@
   </div>
 </section>
 
+<div class="art art-band" data-art="contour" aria-hidden="true"></div>
+
 <!-- CONTACT -->
 <section id="contact">
+  <div class="art art-abs art-corner" data-art="rings" aria-hidden="true"></div>
   <div class="section-label">07 — Contact</div>
   <div class="contact-row">
     <div>
@@ -1803,129 +1992,331 @@
 </section>
 
 <footer>
+  <div class="art art-footer" data-art="field" aria-hidden="true"></div>
   <span>© 2026 Zachary Frederic</span>
   <span>IT · Design · Development · <a href="https://zachc0des.github.io/Zachc0des-Portfolio/#/" target="_blank" rel="noopener">Zach/C0des</a> · <a href="https://zachc0des.github.io/zconcepts/" target="_blank" rel="noopener">Z Concepts</a> · <a href="https://zachc0des.github.io/sixcards/" target="_blank" rel="noopener">Six Cards</a> · <a href="https://zachc0des.github.io/Zvault/" target="_blank" rel="noopener">Z Vault</a> · <a href="https://zachc0des.github.io/zjim/" target="_blank" rel="noopener">Z.JIM</a></span>
 </footer>
 
 <script>
-  /* ─── LIVE WAVE FIELD ─── */
-  (function () {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const canvas = document.getElementById('waves');
-    if (!canvas || prefersReduced) return;
+/* ═══════════════════════════════════════════════
+   ENGRAVED LINE ART — generated as inline SVG
+   ═══════════════════════════════════════════════ */
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
 
-    const ctx = canvas.getContext('2d');
-    let w = 0, h = 0, dpr = 1, t = 0, raf = null;
-    let pointer = 0.5;
+  function svg(vb, stretch) {
+    var s = document.createElementNS(NS, 'svg');
+    s.setAttribute('viewBox', vb);
+    s.setAttribute('fill', 'none');
+    s.setAttribute('stroke', 'currentColor');
+    s.setAttribute('stroke-width', '1');
+    s.setAttribute('vector-effect', 'non-scaling-stroke');
+    s.setAttribute('preserveAspectRatio', stretch ? 'none' : 'xMidYMid meet');
+    return s;
+  }
 
-    function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = canvas.clientWidth;
-      h = canvas.clientHeight;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
+  function path(parent, d, width) {
+    var p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', d);
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', 'currentColor');
+    p.setAttribute('stroke-width', width || 1);
+    p.setAttribute('vector-effect', 'non-scaling-stroke');
+    parent.appendChild(p);
+    return p;
+  }
 
-    const LINES = 7;
-
-    function draw() {
-      ctx.clearRect(0, 0, w, h);
-
-      for (let i = 0; i < LINES; i++) {
-        const phase = i * 0.55;
-        const amp = 26 + i * 14;
-        const baseY = h * 0.5 + (i - LINES / 2) * (h * 0.055);
-        const drift = (pointer - 0.5) * 40;
-
-        ctx.beginPath();
-        for (let x = 0; x <= w; x += 8) {
-          const y =
-            baseY +
-            Math.sin(x * 0.0032 + t + phase) * amp +
-            Math.sin(x * 0.0011 - t * 0.65 + phase) * (amp * 0.5) +
-            drift * Math.sin(x * 0.002 + phase);
-          if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-        }
-        ctx.strokeStyle = 'rgba(10,10,10,' + (0.055 - i * 0.005).toFixed(3) + ')';
-        ctx.lineWidth = 1;
-        ctx.stroke();
+  /* Concentric contour rings — the ripple in the reference plates */
+  function rings(el) {
+    var s = svg('0 0 400 400');
+    var cx = 200, cy = 200, RINGS = 24, STEPS = 72;
+    for (var i = 0; i < RINGS; i++) {
+      var base = 9 + i * 8.2;
+      var wob = 1.2 + i * 0.42;
+      var d = '';
+      for (var k = 0; k <= STEPS; k++) {
+        var a = (k / STEPS) * Math.PI * 2;
+        var r = base + Math.sin(a * 3 + i * 0.5) * wob + Math.sin(a * 5 - i * 0.3) * (wob * 0.35);
+        var x = cx + Math.cos(a) * r;
+        var y = cy + Math.sin(a) * r * 0.96;
+        d += (k === 0 ? 'M' : 'L') + x.toFixed(1) + ' ' + y.toFixed(1);
       }
+      path(s, d + 'Z', i % 6 === 0 ? 1.4 : 1);
+    }
+    el.appendChild(s);
+  }
 
-      t += 0.0035;
-      raf = requestAnimationFrame(draw);
+  /* Quarter polar grid — arcs + spokes, anchored to the corner */
+  function polar(el) {
+    var s = svg('0 0 200 200');
+    var cx = 200, cy = 0, i, k;
+    for (i = 0; i < 15; i++) {
+      var r = 16 + i * 14;
+      var d = '';
+      for (k = 0; k <= 24; k++) {
+        var a = (k / 24) * (Math.PI / 2);
+        var x = cx - Math.cos(a) * r;
+        var y = cy + Math.sin(a) * r;
+        d += (k === 0 ? 'M' : 'L') + x.toFixed(1) + ' ' + y.toFixed(1);
+      }
+      path(s, d, i % 4 === 0 ? 1.5 : 1);
+    }
+    for (i = 0; i <= 10; i++) {
+      var ang = (i / 10) * (Math.PI / 2);
+      var x1 = cx - Math.cos(ang) * 14, y1 = cy + Math.sin(ang) * 14;
+      var x2 = cx - Math.cos(ang) * 226, y2 = cy + Math.sin(ang) * 226;
+      path(s, 'M' + x1.toFixed(1) + ' ' + y1.toFixed(1) + 'L' + x2.toFixed(1) + ' ' + y2.toFixed(1), i % 3 === 0 ? 1.6 : 0.9);
+    }
+    el.appendChild(s);
+  }
+
+  /* Horizontal rule band — line spacing tightens toward the edges */
+  function hatch(el) {
+    var s = svg('0 0 1200 60', true);
+    for (var i = 0; i <= 15; i++) {
+      var t = i / 15;
+      var eased = t + Math.sin(t * Math.PI) * 0.14 - 0.07;
+      var y = eased * 60;
+      var d = '';
+      for (var x = 0; x <= 1200; x += 40) {
+        var yy = y + Math.sin(x * 0.0042 + i * 0.22) * 1.6;
+        d += (x === 0 ? 'M' : 'L') + x + ' ' + yy.toFixed(2);
+      }
+      path(s, d, i % 5 === 0 ? 1.3 : 0.85);
+    }
+    el.appendChild(s);
+  }
+
+  /* Contour band — parallel lines swelling around a hidden centre */
+  function contour(el) {
+    var s = svg('0 0 1200 60', true);
+    for (var i = 0; i <= 13; i++) {
+      var base = (i / 13) * 60;
+      var amp = 3 + Math.sin((i / 13) * Math.PI) * 10;
+      var d = '';
+      for (var x = 0; x <= 1200; x += 30) {
+        var y = base + Math.sin(x * 0.0055 + i * 0.16) * amp * 0.5
+                     + Math.sin(x * 0.0018 - i * 0.1) * amp * 0.45;
+        d += (x === 0 ? 'M' : 'L') + x + ' ' + y.toFixed(2);
+      }
+      path(s, d, i % 4 === 0 ? 1.3 : 0.85);
+    }
+    el.appendChild(s);
+  }
+
+  /* Field lines — parallel rules raking toward a vanishing point */
+  function field(el) {
+    var s = svg('0 0 1200 140', true);
+    var fx = 1180, fy = 70;
+    for (var i = 0; i <= 30; i++) {
+      var y0 = (i / 30) * 260 - 60;
+      var d = 'M0 ' + y0.toFixed(1) + 'L' + fx + ' ' + fy;
+      path(s, d, i % 6 === 0 ? 1.3 : 0.8);
+    }
+    el.appendChild(s);
+  }
+
+  var builders = { rings: rings, polar: polar, hatch: hatch, contour: contour, field: field };
+
+  document.querySelectorAll('[data-art]').forEach(function (el) {
+    var fn = builders[el.getAttribute('data-art')];
+    if (fn) fn(el);
+  });
+
+  /* Sprout mark on every section label */
+  var SPROUT = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">'
+    + '<path d="M10 18V8"/>'
+    + '<path d="M10 11C10 8 8 5.5 4.5 5c-.3 3.4 2 6 5.5 6Z"/>'
+    + '<path d="M10 13c0-2.6 1.8-4.8 5-5.2.3 3-1.8 5.2-5 5.2Z"/>'
+    + '</svg>';
+
+  document.querySelectorAll('.section-label').forEach(function (el) {
+    var span = document.createElement('span');
+    span.className = 'sprout';
+    span.setAttribute('aria-hidden', 'true');
+    span.innerHTML = SPROUT;
+    el.insertBefore(span, el.firstChild);
+  });
+
+  /* Toggle glyph — half-lit disc */
+  var glyph = document.querySelector('.theme-glyph');
+  if (glyph) {
+    glyph.innerHTML = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4">'
+      + '<circle cx="10" cy="10" r="7"/>'
+      + '<path d="M10 3a7 7 0 0 0 0 14Z" fill="currentColor" stroke="none"/>'
+      + '</svg>';
+  }
+})();
+
+/* ═══════════════════════════════════════════════
+   THEME — daylight / lantern
+   ═══════════════════════════════════════════════ */
+(function () {
+  var KEY = 'zf-theme';
+  var root = document.documentElement;
+  var btn = document.getElementById('theme-toggle');
+  var label = document.getElementById('theme-label');
+  var meta = document.querySelector('meta[name="theme-color"]');
+
+  function apply(mode) {
+    root.setAttribute('data-theme', mode);
+    if (label) label.textContent = mode === 'dark' ? 'Day' : 'Night';
+    if (btn) {
+      btn.setAttribute('aria-pressed', mode === 'dark' ? 'true' : 'false');
+      btn.setAttribute('aria-label', mode === 'dark' ? 'Switch to day theme' : 'Switch to night theme');
+    }
+    if (meta) meta.setAttribute('content', mode === 'dark' ? '#241a13' : '#faeee1');
+    window.dispatchEvent(new CustomEvent('themechange'));
+  }
+
+  apply(root.getAttribute('data-theme') || 'light');
+
+  if (btn) {
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+    });
+  }
+})();
+
+/* ═══════════════════════════════════════════════
+   LIVE CONTOUR FIELD
+   ═══════════════════════════════════════════════ */
+(function () {
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canvas = document.getElementById('waves');
+  if (!canvas || prefersReduced) return;
+
+  var ctx = canvas.getContext('2d');
+  var w = 0, h = 0, dpr = 1, t = 0, raf = null;
+  var px = 0.72, py = 0.42;
+  var stroke = 'rgba(93,64,44,0.32)';
+
+  function readStroke() {
+    var v = getComputedStyle(document.documentElement).getPropertyValue('--line').trim();
+    if (v) stroke = v;
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = canvas.clientWidth;
+    h = canvas.clientHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  var RINGS = 26, STEPS = 56;
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    ctx.strokeStyle = stroke;
+    ctx.lineWidth = 1;
+
+    var cx = w * px, cy = h * py;
+
+    for (var i = 0; i < RINGS; i++) {
+      var base = 34 + i * (Math.max(w, h) * 0.028);
+      var wob = 4 + i * 1.1;
+      ctx.globalAlpha = Math.max(0.06, 0.5 - i * 0.017);
+      ctx.beginPath();
+      for (var k = 0; k <= STEPS; k++) {
+        var a = (k / STEPS) * Math.PI * 2;
+        var r = base
+          + Math.sin(a * 3 + t * 1.1 + i * 0.42) * wob
+          + Math.sin(a * 5 - t * 0.7 + i * 0.2) * wob * 0.4;
+        var x = cx + Math.cos(a) * r;
+        var y = cy + Math.sin(a) * r * 0.92;
+        if (k === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.stroke();
     }
 
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', (e) => {
-      pointer = e.clientX / window.innerWidth;
-    }, { passive: true });
+    ctx.globalAlpha = 1;
+    t += 0.0045;
+    raf = requestAnimationFrame(draw);
+  }
 
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        cancelAnimationFrame(raf);
+  window.addEventListener('resize', resize);
+  window.addEventListener('themechange', readStroke);
+
+  window.addEventListener('mousemove', function (e) {
+    px += ((e.clientX / window.innerWidth) * 0.5 + 0.45 - px) * 0.06;
+    py += ((e.clientY / window.innerHeight) * 0.4 + 0.25 - py) * 0.06;
+  }, { passive: true });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) cancelAnimationFrame(raf);
+    else raf = requestAnimationFrame(draw);
+  });
+
+  readStroke();
+  resize();
+  draw();
+})();
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════ */
+(function () {
+  var items = document.querySelectorAll(
+    '.skill-card, .project-item, .ai-card, .fitness-card, .fitness-stat, .fact-row, .cert-item, .zjim'
+  );
+
+  if (!('IntersectionObserver' in window)) return;
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry, i) {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fadeUp 0.6s ' + (i * 0.05) + 's cubic-bezier(0.22,1,0.36,1) both';
+        entry.target.style.opacity = '1';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  items.forEach(function (el) {
+    el.style.opacity = '0';
+    observer.observe(el);
+  });
+})();
+
+/* ═══════════════════════════════════════════════
+   ACTIVE NAV LINK
+   ═══════════════════════════════════════════════ */
+(function () {
+  var sections = document.querySelectorAll('section, #home');
+  var navLinks = document.querySelectorAll('.nav-links a');
+  var ticking = false;
+
+  function update() {
+    var current = '';
+    sections.forEach(function (sec) {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    navLinks.forEach(function (a) {
+      var isActive = a.getAttribute('href') === '#' + current;
+      if (a.classList.contains('health-link')) {
+        a.style.color = isActive ? 'var(--iron-dark)' : '';
+      } else if (a.classList.contains('study-link') || a.classList.contains('concepts-link') ||
+                 a.classList.contains('cards-link') || a.classList.contains('vault-link')) {
+        a.style.color = '';
       } else {
-        raf = requestAnimationFrame(draw);
+        a.style.color = isActive ? 'var(--ink)' : '';
       }
     });
+    ticking = false;
+  }
 
-    resize();
-    draw();
-  })();
-
-  /* ─── SCROLL REVEAL ─── */
-  (function () {
-    const items = document.querySelectorAll(
-      '.skill-card, .project-item, .ai-card, .fitness-card, .fitness-stat, .fact-row, .cert-item, .zjim'
-    );
-
-    if (!('IntersectionObserver' in window)) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = 'fadeUp 0.6s ' + (i * 0.05) + 's cubic-bezier(0.22,1,0.36,1) both';
-          entry.target.style.opacity = '1';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-
-    items.forEach((el) => {
-      el.style.opacity = '0';
-      observer.observe(el);
-    });
-  })();
-
-  /* ─── ACTIVE NAV LINK ─── */
-  (function () {
-    const sections = document.querySelectorAll('section, #home');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    let ticking = false;
-
-    function update() {
-      let current = '';
-      sections.forEach((sec) => {
-        if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
-      });
-      navLinks.forEach((a) => {
-        const isActive = a.getAttribute('href') === '#' + current;
-        if (a.classList.contains('health-link')) {
-          a.style.color = isActive ? '#6b1a1a' : '';
-        } else {
-          a.style.color = isActive ? 'var(--ink)' : '';
-        }
-      });
-      ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
     }
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(update);
-        ticking = true;
-      }
-    }, { passive: true });
-  })();
+  }, { passive: true });
+})();
 </script>
 </body>
 </html>
