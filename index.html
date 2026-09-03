@@ -535,6 +535,57 @@
       line-height: 1.6;
     }
 
+    /* ─── BIO (Read More) ─── */
+    .bio-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      padding: 11px 24px;
+      border: 1px solid var(--tag-border);
+      background: transparent;
+      color: var(--grey);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: crosshair;
+      transition: all 0.3s var(--ease);
+    }
+
+    .bio-toggle:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+      background: var(--card-hover);
+    }
+
+    .bio-toggle-icon {
+      font-size: 13px;
+      line-height: 1;
+      display: inline-block;
+      transition: transform 0.4s var(--ease);
+    }
+
+    .bio-toggle[aria-expanded="true"] .bio-toggle-icon {
+      transform: rotate(45deg);
+    }
+
+    .bio-content {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-top: 0;
+      transition: max-height 0.7s var(--ease), opacity 0.5s var(--ease), margin-top 0.5s var(--ease);
+    }
+
+    .bio-content.open {
+      max-height: 3000px;
+      opacity: 1;
+      margin-top: 26px;
+    }
+
+    .bio-content .about-text:first-child { margin-top: 0; }
+
     /* ─── CARD GRIDS (shared) ─── */
     .grid-frame {
       display: grid;
@@ -1180,6 +1231,46 @@
         build tools for problems I actually have. I gravitate toward systems thinking —
         understanding how things connect before deciding how to change them.
       </p>
+
+      <button class="bio-toggle" id="bio-toggle" type="button" aria-expanded="false" aria-controls="bio-content">
+        <span id="bio-toggle-label">Read My Story</span>
+        <span class="bio-toggle-icon" aria-hidden="true">+</span>
+      </button>
+
+      <div class="bio-content" id="bio-content">
+        <p class="about-text">
+          Hi, I'm Zachary Frederic. I was born in Orlando, Florida, but that's not where my story starts.
+          I spent my early years abroad, completing elementary school in Toronto, Ontario &amp; Ottawa, Ontario,
+          and my first two years of high school in Ottawa, Ontario. In 2019, I moved back to the U.S. and
+          started my junior year at Seminole Ridge Community High School — my first real experience in a
+          traditional American classroom.
+        </p>
+        <p class="about-text">
+          That experience was short-lived. About three or four months in, COVID hit and everything shut down.
+          I spent the rest of high school finishing my diploma while working my first job at McDonald's.
+          I ended up staying there through two gap years after graduation, figuring out what I actually
+          wanted to do next.
+        </p>
+        <p class="about-text">
+          It was during my second gap year that I landed my first customer support role, working remotely
+          for Radial on accounts for Kate Spade, Cole Haan, and Hibbett Sports. That's really where my
+          career path started to take shape. From there, I went back to working in person at Winn-Dixie as
+          a frozen inventory specialist, but I already had my sights set on something more technical. That
+          led me to Miami Gardens, where I attended trade school through Miami Job Corps and came out with
+          a cybersecurity-focused certificate, office administration credentials, and some genuinely
+          valuable life-skills and coaching training.
+        </p>
+        <p class="about-text">
+          After that, I moved to West Palm Beach and got my first job in the airline industry as a Customer
+          Service Representative for Surf Air, supporting Southern Airways Express and Mokulele Airlines.
+          I spent about a year there before deciding to relocate to Orlando for better travel access and to
+          set myself up for the long run. While I was preparing for that move, I switched over to VXI
+          Global Solutions.
+        </p>
+        <p class="about-text">
+          Right now, I'm working toward a Bachelor's degree in Information Technology Business Management.
+        </p>
+      </div>
     </div>
 
     <div class="about-facts">
@@ -2178,6 +2269,22 @@
       try { localStorage.setItem(KEY, next); } catch (e) {}
     });
   }
+})();
+
+/* ═══════════════════════════════════════════════
+   ABOUT — bio read more / read less
+   ═══════════════════════════════════════════════ */
+(function () {
+  var btn = document.getElementById('bio-toggle');
+  var content = document.getElementById('bio-content');
+  var label = document.getElementById('bio-toggle-label');
+  if (!btn || !content) return;
+
+  btn.addEventListener('click', function () {
+    var isOpen = content.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (label) label.textContent = isOpen ? 'Show Less' : 'Read My Story';
+  });
 })();
 
 /* ═══════════════════════════════════════════════
